@@ -2,6 +2,76 @@
 
 # GenProject
 
+Spring Boot + Thymeleaf + MyBatis + Oracle を連携した Web プロジェクトです。
+ユーザー(User)とグループ(Group)の CRUD サンプルを含み、Thymeleaf テンプレートエンジンを使用して View を処理します。
+
+---
+
+## 主な担当内容
+
+本プロジェクトでは、リアルタイム通知・チャット、掲示板（投稿・コメント）、通報、簡易マッチングフィルターなどの主要なユーザー機能を自ら企画・設計し、実装しました。
+
+- **リアルタイム通知システム**
+    - Spring WebSocket & STOMP を用いたリアルタイム通知の実装
+    - コメント作成、通報、チャットメッセージなどの特定イベント発生時に対象者へ通知を送信
+- **リアルタイムチャット機能**
+    - グループごとにチャットルームを生成し、WebSocket で接続
+    - チャットメッセージの送受信、削除、通報処理
+- **掲示板 & コメント**
+    - 投稿 CRUD、ページネーション処理
+    - 投稿の並び替え、カテゴリー別フィルターおよび検索
+    - コメントの作成・編集・削除、階層型コメント（大コメント）構造を実装
+    - 通報機能と連携し、違法・不適切コンテンツを管理
+- **通報システム**
+    - 投稿・コメント・チャットメッセージの通報モーダルを実装
+    - 通報カテゴリと理由を選択し、通報履歴を DB に保存
+    - 通報の累積に応じた制裁ロジックを設計
+- **簡易マッチングフィルター**
+    - 条件（カテゴリー、年齢層、性別など）によるグループリストのフィルタリング
+    - フィルター結果から詳細ページ & チャットルームへ動的に接続
+
+---
+
+## Stack
+
+- **Framework:** Spring Boot
+- **View:** Thymeleaf
+- **ORM:** MyBatis
+- **DB:** Oracle XE
+- **ビルド:** Gradle 
+
+---
+
+```properties
+DB 設定 (application.properties)
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=system
+spring.datasource.password=12345
+
+mybatis.mapper-locations=classpath:mapper/*.xml
+```
+
+---
+
+## 接続 URL
+- http://localhost:8080/
+
+---
+
+## 学び・感想
+今回のプロジェクトを通じて、リアルタイム WebSocket 通信やユーザー向け機能（通知、通報）を自ら設計・実装することで、
+Spring Boot の MVC 構造と DB 連携、認証フローを実務に近い形で経験できました。
+チームメンバーとのコミュニケーションの重要性や協働作業の大切さを学び、
+また GitHub Flow に基づくブランチ戦略とコードレビューの経験を通じて、実践的なチーム開発力を高めることができました。
+
+-----------------------------------------------------------------------
+
+
+# GenProject 2nd project
+
+# GenProject
+
 Spring Boot + Thymeleaf + MyBatis + Oracle 연동 웹 프로젝트입니다.  
 회원(User)과 그룹(Group) CRUD 예제를 포함하며 Thymeleaf 템플릿 엔진을 사용해 View를 처리합니다.
 
@@ -38,7 +108,7 @@ Spring Boot + Thymeleaf + MyBatis + Oracle 연동 웹 프로젝트입니다.
 - **View:** Thymeleaf
 - **ORM:** MyBatis
 - **DB:** Oracle XE
-- **빌드:** Gradle (또는 Maven)
+- **빌드:** Gradle
 
 ---
 
@@ -52,13 +122,6 @@ spring.datasource.password=12345
 
 mybatis.mapper-locations=classpath:mapper/*.xml
 ```
-
-## 실행 방법
-
-- ./gradlew bootRun
-
----
-
 
 ## 접속 주소
 
